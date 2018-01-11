@@ -16,6 +16,7 @@
     <callback method="start" transition="validate"/>
     <callback method="stop" transition="invalidate"/>
     <provides specifications="fr.liglab.adele.icasa.service.scheduler.PeriodicRunnable"/>
+    <provides specifications="org.example.temperature.configuration.TemperatureConfiguration"/>
   </component>
   <instance component="TemperatureController" name="TemperatureController"/>
 </ipojo>

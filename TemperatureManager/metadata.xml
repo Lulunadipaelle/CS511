@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ipojo xmlns="org.apache.felix.ipojo">
+  <component classname="org.example.temperature.manager.impl.TemperatureManagerImpl" name="TemperatureManager">
+    <provides specifications="org.example.temperature.manager.administration.TemperatureManagerAdministration">
+      <property field="t_administrationService" name="t_administrationService" type="org.example.temperature.manager.administration.TemperatureManagerAdministration"/>
+    </provides>
+    <requires optional="true" specification="org.example.temperature.configuration.TemperatureConfiguration" field="TemperatureGoal"/>
+    <callback method="start" transition="validate"/>
+    <callback method="stop" transition="invalidate"/>
+  </component>
+  <instance component="TemperatureManager" name="TemperatureManager"/>
+</ipojo>

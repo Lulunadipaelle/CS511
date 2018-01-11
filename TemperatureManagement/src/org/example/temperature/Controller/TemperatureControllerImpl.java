@@ -14,7 +14,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class TemperatureControllerImpl implements DeviceListener, PeriodicRunnable {
+import org.example.temperature.configuration.TemperatureConfiguration;
+
+public class TemperatureControllerImpl implements DeviceListener, PeriodicRunnable, TemperatureConfiguration {
 
 	/** Field for heaters dependency */
 	private Heater[] heaters;
@@ -285,6 +287,20 @@ public class TemperatureControllerImpl implements DeviceListener, PeriodicRunnab
 	@Override
 	public TimeUnit getUnit() {
 		return TimeUnit.SECONDS;
+	}
+
+	@Override
+	public void setTargetedTemperature(String targetedRoom, float temperature) {
+		// TODO Auto-generated method stub
+		System.out.println("Entering setTargetedTemperature in Controller");
+		
+	}
+
+	@Override
+	public float getTargetedTemperature(String room) {
+		// TODO Auto-generated method stub
+		System.out.println("Entering getTargetedTemperature in Controller");
+		return 0;
 	}
 
 }

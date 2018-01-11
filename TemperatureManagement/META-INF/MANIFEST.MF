@@ -5,6 +5,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-SymbolicName: TemperatureManagement
 Bundle-Version: 1.0.0.qualifier
 Created-By: iPOJO 1.12.1
+Export-Package: org.example.temperature.configuration
 Import-Package: fr.liglab.adele.icasa, fr.liglab.adele.icasa.access, f
  r.liglab.adele.icasa.access.command, fr.liglab.adele.icasa.applicatio
  n, fr.liglab.adele.icasa.application.impl, fr.liglab.adele.icasa.appl
@@ -57,50 +58,56 @@ iPOJO-Components: instance { $component="TemperatureController" $name=
  meter" $type="bind" }callback { $method="unbindThermometer" $type="un
  bind" }}callback { $method="start" $transition="validate" }callback {
   $method="stop" $transition="invalidate" }provides { $specifications=
- "fr.liglab.adele.icasa.service.scheduler.PeriodicRunnable" }manipulat
- ion { $classname="org.example.temperature.Controller.TemperatureContr
- ollerImpl" interface { $name="fr.liglab.adele.icasa.device.DeviceList
- ener" }interface { $name="fr.liglab.adele.icasa.service.scheduler.Per
- iodicRunnable" }field { $name="coolers" $type="fr.liglab.adele.icasa.
- device.temperature.Cooler[]" }field { $name="heaters" $type="fr.ligla
- b.adele.icasa.device.temperature.Heater[]" }field { $name="temperatur
- eGoal" $type="double" }field { $name="temperatureGoalBathroom" $type=
- "double" }field { $name="temperatureGoalBedroom" $type="double" }fiel
- d { $name="temperatureGoalKitchen" $type="double" }field { $name="tem
- peratureGoalLivingroom" $type="double" }field { $name="thermometers" 
- $type="fr.liglab.adele.icasa.device.temperature.Thermometer[]" }metho
- d { $name="bindThermometer" $arguments="{fr.liglab.adele.icasa.device
- .temperature.Thermometer,java.util.Map}" $names="{thermometer,propert
- ies}" }method { $name="unbindThermometer" $arguments="{fr.liglab.adel
- e.icasa.device.temperature.Thermometer,java.util.Map}" $names="{therm
- ometer,properties}" }method { $name="bindCooler" $arguments="{fr.ligl
- ab.adele.icasa.device.temperature.Cooler,java.util.Map}" $names="{coo
- ler,properties}" }method { $name="unbindCooler" $arguments="{fr.ligla
- b.adele.icasa.device.temperature.Cooler,java.util.Map}" $names="{cool
- er,properties}" }method { $name="bindHeater" $arguments="{fr.liglab.a
- dele.icasa.device.temperature.Heater,java.util.Map}" $names="{heater,
- properties}" }method { $name="unbindHeater" $arguments="{fr.liglab.ad
- ele.icasa.device.temperature.Heater,java.util.Map}" $names="{heater,p
- roperties}" }method { $name="stop" }method { $name="start" }method { 
- $name="deviceAdded" $arguments="{fr.liglab.adele.icasa.device.Generic
- Device}" $names="{arg0}" }method { $name="deviceEvent" $arguments="{f
- r.liglab.adele.icasa.device.GenericDevice,java.lang.Object}" $names="
- {arg0,arg1}" }method { $name="devicePropertyAdded" $arguments="{fr.li
- glab.adele.icasa.device.GenericDevice,java.lang.String}" $names="{arg
- 0,arg1}" }method { $name="devicePropertyModified" $arguments="{fr.lig
- lab.adele.icasa.device.GenericDevice,java.lang.String,java.lang.Objec
- t,java.lang.Object}" $names="{arg0,arg1,arg2,arg3}" }method { $name="
- devicePropertyRemoved" $arguments="{fr.liglab.adele.icasa.device.Gene
- ricDevice,java.lang.String}" $names="{arg0,arg1}" }method { $name="de
- viceRemoved" $arguments="{fr.liglab.adele.icasa.device.GenericDevice}
- " $names="{arg0}" }method { $name="run" }method { $name="setGlobalTem
- perature" }method { $name="setTemperatureForRoom" $arguments="{java.l
- ang.String}" $names="{location}" }method { $name="getThermometerFromL
- ocation" $return="java.util.List" $arguments="{java.lang.String}" $na
- mes="{location}" }method { $name="getHeaterFromLocation" $return="jav
- a.util.List" $arguments="{java.lang.String}" $names="{location}" }met
- hod { $name="getCoolerFromLocation" $return="java.util.List" $argumen
- ts="{java.lang.String}" $names="{location}" }method { $name="getPerio
- d" $return="long" }method { $name="getUnit" $return="java.util.concur
- rent.TimeUnit" }}}
+ "fr.liglab.adele.icasa.service.scheduler.PeriodicRunnable" }provides 
+ { $specifications="org.example.temperature.configuration.TemperatureC
+ onfiguration" }manipulation { $classname="org.example.temperature.Con
+ troller.TemperatureControllerImpl" interface { $name="fr.liglab.adele
+ .icasa.device.DeviceListener" }interface { $name="fr.liglab.adele.ica
+ sa.service.scheduler.PeriodicRunnable" }interface { $name="org.exampl
+ e.temperature.configuration.TemperatureConfiguration" }field { $name=
+ "coolers" $type="fr.liglab.adele.icasa.device.temperature.Cooler[]" }
+ field { $name="heaters" $type="fr.liglab.adele.icasa.device.temperatu
+ re.Heater[]" }field { $name="temperatureGoal" $type="double" }field {
+  $name="temperatureGoalBathroom" $type="double" }field { $name="tempe
+ ratureGoalBedroom" $type="double" }field { $name="temperatureGoalKitc
+ hen" $type="double" }field { $name="temperatureGoalLivingroom" $type=
+ "double" }field { $name="thermometers" $type="fr.liglab.adele.icasa.d
+ evice.temperature.Thermometer[]" }method { $name="bindThermometer" $a
+ rguments="{fr.liglab.adele.icasa.device.temperature.Thermometer,java.
+ util.Map}" $names="{thermometer,properties}" }method { $name="unbindT
+ hermometer" $arguments="{fr.liglab.adele.icasa.device.temperature.The
+ rmometer,java.util.Map}" $names="{thermometer,properties}" }method { 
+ $name="bindCooler" $arguments="{fr.liglab.adele.icasa.device.temperat
+ ure.Cooler,java.util.Map}" $names="{cooler,properties}" }method { $na
+ me="unbindCooler" $arguments="{fr.liglab.adele.icasa.device.temperatu
+ re.Cooler,java.util.Map}" $names="{cooler,properties}" }method { $nam
+ e="bindHeater" $arguments="{fr.liglab.adele.icasa.device.temperature.
+ Heater,java.util.Map}" $names="{heater,properties}" }method { $name="
+ unbindHeater" $arguments="{fr.liglab.adele.icasa.device.temperature.H
+ eater,java.util.Map}" $names="{heater,properties}" }method { $name="s
+ top" }method { $name="start" }method { $name="deviceAdded" $arguments
+ ="{fr.liglab.adele.icasa.device.GenericDevice}" $names="{arg0}" }meth
+ od { $name="deviceEvent" $arguments="{fr.liglab.adele.icasa.device.Ge
+ nericDevice,java.lang.Object}" $names="{arg0,arg1}" }method { $name="
+ devicePropertyAdded" $arguments="{fr.liglab.adele.icasa.device.Generi
+ cDevice,java.lang.String}" $names="{arg0,arg1}" }method { $name="devi
+ cePropertyModified" $arguments="{fr.liglab.adele.icasa.device.Generic
+ Device,java.lang.String,java.lang.Object,java.lang.Object}" $names="{
+ arg0,arg1,arg2,arg3}" }method { $name="devicePropertyRemoved" $argume
+ nts="{fr.liglab.adele.icasa.device.GenericDevice,java.lang.String}" $
+ names="{arg0,arg1}" }method { $name="deviceRemoved" $arguments="{fr.l
+ iglab.adele.icasa.device.GenericDevice}" $names="{arg0}" }method { $n
+ ame="run" }method { $name="setGlobalTemperature" }method { $name="set
+ TemperatureForRoom" $arguments="{java.lang.String}" $names="{location
+ }" }method { $name="getThermometerFromLocation" $return="java.util.Li
+ st" $arguments="{java.lang.String}" $names="{location}" }method { $na
+ me="getHeaterFromLocation" $return="java.util.List" $arguments="{java
+ .lang.String}" $names="{location}" }method { $name="getCoolerFromLoca
+ tion" $return="java.util.List" $arguments="{java.lang.String}" $names
+ ="{location}" }method { $name="getPeriod" $return="long" }method { $n
+ ame="getUnit" $return="java.util.concurrent.TimeUnit" }method { $name
+ ="setTargetedTemperature" $arguments="{java.lang.String,float}" $name
+ s="{targetedRoom,temperature}" }method { $name="getTargetedTemperatur
+ e" $return="float" $arguments="{java.lang.String}" $names="{room}" }}
+ }
 
