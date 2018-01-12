@@ -36,6 +36,9 @@ public class TemperatureControllerImpl implements DeviceListener, PeriodicRunnab
 	private double temperatureGoalLivingroom = 291.15d;
 	private double temperatureGoalBedroom = 293.15d;
 	private double temperatureGoalBathroom = 296.15d;
+	
+	private double Kp = 0.02d;
+	//private double error = 0.0d;
 	/**
 	 * The name of the LOCATION property
 	 */
@@ -215,7 +218,46 @@ public class TemperatureControllerImpl implements DeviceListener, PeriodicRunnab
 		}
 		roomTemperature = roomTemperature/sameLocationThermometers.size();
 
+		/*erreur = consigne - mesure;
+    commande = Kp * erreur ;*/
 		
+		double error = targetedRoomTemperature - roomTemperature;
+		double commande = Kp * error;
+		System.out.println(commande);
+		if ((commande < -1.0d) || (commande > 1.0d)) {
+			if (commande < 0.0d) {
+				for (Cooler cooler: sameLocationCoolers) {
+					cooler.setPowerLevel(1.0d);
+				}
+				for (Heater heater : sameLocationHeaters) {
+					heater.setPowerLevel(0.0d);
+				}
+			} else if (commande > 0.0d) {
+				for (Heater heater : sameLocationHeaters) {
+					heater.setPowerLevel(1.0d);
+				}
+				for (Cooler cooler : sameLocationCoolers) {
+					cooler.setPowerLevel(0.0d);
+				}
+			}
+		} else {
+			if (commande < 0.0d) {
+				for (Cooler cooler: sameLocationCoolers) {
+					cooler.setPowerLevel(-commande);
+				}
+				for (Heater heater : sameLocationHeaters) {
+					heater.setPowerLevel(0.0d);
+				}
+			} else if (commande >0.0d) {
+				for (Heater heater : sameLocationHeaters) {
+					heater.setPowerLevel(commande);
+				}
+				for (Cooler cooler : sameLocationCoolers) {
+					cooler.setPowerLevel(0.0d);
+				}
+			}
+		}
+		/*
 		if (roomTemperature < targetedRoomTemperature) { 
 			//The room is cooler than the temperature targeted so we need to activate the heaters
 			for (Heater heater : sameLocationHeaters) {
@@ -232,8 +274,8 @@ public class TemperatureControllerImpl implements DeviceListener, PeriodicRunnab
 			}
 			for (Heater heater : sameLocationHeaters) {
 				heater.setPowerLevel(0.0d);
-			}
-		} else if ((int) roomTemperature == (int) targetedRoomTemperature) {
+			} */
+		 if ((int) roomTemperature == (int) targetedRoomTemperature) {
 			//The room is nice so we turn off the devices
 			for (Cooler cooler: sameLocationCoolers) {
 				cooler.setPowerLevel(0.0d);
@@ -281,7 +323,7 @@ public class TemperatureControllerImpl implements DeviceListener, PeriodicRunnab
 	 */
 	@Override
 	public long getPeriod() {
-		return 5000;
+		return 1000;
 	}
 
 	@Override
