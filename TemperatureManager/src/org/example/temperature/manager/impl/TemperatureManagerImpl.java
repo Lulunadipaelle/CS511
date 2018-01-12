@@ -11,19 +11,17 @@ public class TemperatureManagerImpl implements TemperatureManagerAdministration 
 
 	@Override
 	public void temperatureIsTooHigh(String roomName) {
-		// TODO Auto-generated method stub
-		System.out.println("Entering temperatureIsTooHigh in TemperatureManager");
-		TemperatureGoal.setTargetedTemperature("kitchen", 298.15f);
-		TemperatureGoal.getTargetedTemperature("kitchen");
+		//We need to lower the room temperature by 1 Kelvin
+		System.out.println("Rising temperature in "+roomName);
+		TemperatureGoal.setTargetedTemperature(roomName, TemperatureGoal.getTargetedTemperature(roomName)-1);
+
 		
 	}
 
 	@Override
 	public void temperatureIsTooLow(String roomName) {
-		// TODO Auto-generated method stub
-		System.out.println("Entering temperatureIsTooLow in TemperatureManager");
-		TemperatureGoal.setTargetedTemperature("kitchen", 298.15f);
-		TemperatureGoal.getTargetedTemperature("kitchen");
+		//We need to rise the room temperature by 1 Kelvin
+		TemperatureGoal.setTargetedTemperature(roomName, TemperatureGoal.getTargetedTemperature(roomName)+1);
 	}
 
 	/** Component Lifecycle Method */

@@ -51,4 +51,19 @@
         <move-device-zone deviceId="Heat-A4897S-S" zoneId="bathroom" />
         <move-device-zone deviceId="Ther-A3657Q-S" zoneId="bathroom" />
         <move-device-zone deviceId="Cool-A7499W-S" zoneId="bathroom" />
+
+
+
+        <create-person id="Paul" type="Grandfather" />
+	<move-person-zone personId="Paul" zoneId="livingroom" />
+
+        <create-person id="Paule" type="Grandmother" />
+	<move-person-zone personId="Paule" zoneId="bedroom" />
+
+        <create-person id="Jackie" type="Woman" />
+	<move-person-zone personId="Jackie" zoneId="bathroom" />
+
+        <create-person id="Jacky" type="Man" />
+	<move-person-zone personId="Jacky" zoneId="kitchen" />
+
     </behavior>

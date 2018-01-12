@@ -291,16 +291,44 @@ public class TemperatureControllerImpl implements DeviceListener, PeriodicRunnab
 
 	@Override
 	public void setTargetedTemperature(String targetedRoom, float temperature) {
-		// TODO Auto-generated method stub
-		System.out.println("Entering setTargetedTemperature in Controller");
+		switch(targetedRoom) {
+		
+		case "bedroom":
+			temperatureGoalBedroom = (double) temperature;
+			break;
+		case "bathroom":
+			temperatureGoalBathroom = (double) temperature;
+			break;
+		case "livingroom":
+			temperatureGoalLivingroom = (double) temperature;
+			break;
+		case "kitchen":
+			temperatureGoalKitchen = (double) temperature;
+			break;
+		default:
+			System.out.println("ERROR : Room name not recognized, setting global temperature targeted (setTargetedTemperature)");
+			temperatureGoal = (double) temperature; 
+			break;
+		}
 		
 	}
 
 	@Override
 	public float getTargetedTemperature(String room) {
-		// TODO Auto-generated method stub
-		System.out.println("Entering getTargetedTemperature in Controller");
-		return 0;
+		switch(room) {
+		case "bedroom":
+			return (float) temperatureGoalBedroom;
+		case "bathroom":
+			return (float) temperatureGoalBathroom;
+		case "livingroom":
+			return (float) temperatureGoalLivingroom;
+		case "kitchen":
+			return (float) temperatureGoalKitchen;
+		default:
+			System.out.println("ERROR : Room name not recognized, displaying global temperature targeted (getTargetedTemperature)");
+			return (float) temperatureGoal; 
+		}
+
 	}
 
 }

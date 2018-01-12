@@ -31,13 +31,13 @@
         // Each command should start with a @Command annotation
         @Command
         public void tempTooHigh(String room) {
-        	System.out.println("Entering tempTooHigh command");
+        	System.out.println("Rising temperature in "+room);
             t_administrationService.temperatureIsTooHigh(room);
         }
      
         @Command
         public void tempTooLow(String room){
-        	System.out.println("Entering tempTooLow command");
+        	System.out.println("Lowering temperature in "+room);
         	t_administrationService.temperatureIsTooLow(room);
         }
      
