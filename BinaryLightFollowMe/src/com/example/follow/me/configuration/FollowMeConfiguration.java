@@ -22,4 +22,14 @@ public interface FollowMeConfiguration {
      *            the maximum allowed energy consumption in Watts/hours in each room
      */
     public void setMaximumAllowedEnergyInRoom(double maximumEnergy);
+
+	public double getTargetedIlluminance();
+
+	/**
+	 * Sets the targeted illuminance for each room
+	 * 
+	 * @param illuminance
+	 *            the targeted illuminance in lumens for each room
+	 */
+	public void setTargetedIlluminance(double illuminance);
 }

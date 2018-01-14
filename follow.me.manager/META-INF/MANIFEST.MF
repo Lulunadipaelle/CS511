@@ -50,32 +50,38 @@ iPOJO-Components: instance { $component="FollowMeManager" $name="Follo
  omponent { $classname="org.example.follow.me.manager.impl.FollowMeMan
  agerImpl" $name="FollowMeManager" callback { $method="start" $transit
  ion="validate" }callback { $method="stop" $transition="invalidate" }p
- roperties { }requires { $optional="true" $specification="com.example.
- follow.me.configuration.FollowMeConfiguration" $field="IlluminanceGoa
- l" }provides { $specifications="org.example.follow.me.manager.FollowM
- eAdministration" property { $field="m_administrationService" $name="m
- _administrationService" $type="org.example.follow.me.manager.FollowMe
- Administration" }}manipulation { $classname="org.example.follow.me.ma
+ roperties { }provides { $specifications="org.example.follow.me.manage
+ r.FollowMeAdministration" property { $field="m_administrationService"
+  $name="m_administrationService" $type="org.example.follow.me.manager
+ .FollowMeAdministration" }}requires { $optional="true" $specification
+ ="com.example.follow.me.configuration.FollowMeConfiguration" $field="
+ IlluminanceGoal" }manipulation { $classname="org.example.follow.me.ma
  nager.impl.FollowMeManagerImpl" interface { $name="org.example.follow
  .me.manager.FollowMeAdministration" }field { $name="IlluminanceGoal" 
  $type="com.example.follow.me.configuration.FollowMeConfiguration" }fi
- eld { $name="high_level_goals" $type="java.lang.String" }field { $nam
- e="m_administrationService" $type="org.example.follow.me.manager.Foll
- owMeAdministration" }method { $name="stop" }method { $name="start" }m
- ethod { $name="setIlluminancePreference" $arguments="{org.example.fol
- low.me.manager.IlluminanceGoal}" $names="{illuminanceGoal}" }method {
-  $name="getIlluminancePreference" $return="org.example.follow.me.mana
- ger.IlluminanceGoal" }}}component { $name="org.example.follow.me.mana
- ger.command.FollowMeManagerCommandImpl" $classname="org.example.follo
- w.me.manager.command.FollowMeManagerCommandImpl" fr.liglab.adele.icas
- a.command.handler:commandprovider { $namespace="followme" fr.liglab.a
- dele.icasa.command.handler:command { $method="setIlluminancePreferenc
- e" }fr.liglab.adele.icasa.command.handler:command { $method="getIllum
- inancePreference" }}requires { $field="m_administrationService" }mani
- pulation { $classname="org.example.follow.me.manager.command.FollowMe
- ManagerCommandImpl" field { $name="m_administrationService" $type="or
- g.example.follow.me.manager.FollowMeAdministration" }method { $name="
- setIlluminancePreference" $arguments="{java.lang.String}" $names="{go
- al}" }method { $name="getIlluminancePreference" }method { $name="stop
- " }method { $name="start" }}}
+ eld { $name="m_administrationService" $type="org.example.follow.me.ma
+ nager.FollowMeAdministration" }method { $name="stop" }method { $name=
+ "start" }method { $name="setIlluminancePreference" $arguments="{org.e
+ xample.follow.me.manager.IlluminanceGoal}" $names="{illuminanceGoal}"
+  }method { $name="getIlluminancePreference" $return="org.example.foll
+ ow.me.manager.IlluminanceGoal" }method { $name="setEnergyGoal" $argum
+ ents="{org.example.follow.me.manager.EnergyGoal}" $names="{energyGoal
+ }" }method { $name="getEnergyGoal" $return="org.example.follow.me.man
+ ager.EnergyGoal" }}}component { $name="org.example.follow.me.manager.
+ command.FollowMeManagerCommandImpl" $classname="org.example.follow.me
+ .manager.command.FollowMeManagerCommandImpl" fr.liglab.adele.icasa.co
+ mmand.handler:commandprovider { $namespace="followme" fr.liglab.adele
+ .icasa.command.handler:command { $method="setIlluminancePreference" }
+ fr.liglab.adele.icasa.command.handler:command { $method="getIlluminan
+ cePreference" }fr.liglab.adele.icasa.command.handler:command { $metho
+ d="getEnergyGoal" }fr.liglab.adele.icasa.command.handler:command { $m
+ ethod="setEnergyGoal" }}requires { $field="m_administrationService" }
+ manipulation { $classname="org.example.follow.me.manager.command.Foll
+ owMeManagerCommandImpl" field { $name="m_administrationService" $type
+ ="org.example.follow.me.manager.FollowMeAdministration" }method { $na
+ me="setIlluminancePreference" $arguments="{java.lang.String}" $names=
+ "{goal}" }method { $name="getIlluminancePreference" }method { $name="
+ getEnergyGoal" }method { $name="setEnergyGoal" $arguments="{java.lang
+ .String}" $names="{goal}" }method { $name="stop" }method { $name="sta
+ rt" }}}
 

@@ -4,10 +4,10 @@
     <callback method="start" transition="validate"/>
     <callback method="stop" transition="invalidate"/>
     <properties/>
-    <requires optional="true" specification="com.example.follow.me.configuration.FollowMeConfiguration" field="IlluminanceGoal"/>
     <provides specifications="org.example.follow.me.manager.FollowMeAdministration">
       <property field="m_administrationService" name="m_administrationService" type="org.example.follow.me.manager.FollowMeAdministration"/>
     </provides>
+    <requires optional="true" specification="com.example.follow.me.configuration.FollowMeConfiguration" field="IlluminanceGoal"/>
   </component>
   <instance component="FollowMeManager" name="FollowMeManager"/>
 </ipojo>

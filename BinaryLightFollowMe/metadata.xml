@@ -24,6 +24,7 @@
       <callback method="bindPhotometer" type="bind"/>
       <callback method="unbindPhotometer" type="unbind"/>
     </requires>
+    <requires optional="true" specification="fr.liglab.adele.icasa.service.zone.size.calculator.ZoneSizeCalculator" field="zoneSizeCalculator"/>
   </component>
   <instance component="BinaryFollowMe" name="my.first.follow.me"/>
 </ipojo>
