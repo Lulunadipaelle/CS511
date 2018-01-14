@@ -54,5 +54,15 @@
 	<move-device-zone deviceId="DL-A0004W-S" zoneId="bathroom" />
 	
 	<create-person id="Paul" type="Grandfather" />
+	<move-person-zone personId="Paul" zoneId="bathroom" />
+
+	<create-person id="Paulette" type="Grandmother" />
+	<move-person-zone personId="Paulette" zoneId="bedroom" />
+
+	<create-person id="Paulino" type="Man" />
+	<move-person-zone personId="Paulino" zoneId="livingroom" />
+
+	<create-person id="Paulinette" type="Woman" />
+	<move-person-zone personId="Paulinette" zoneId="kitchen" />
 
 </behavior>
